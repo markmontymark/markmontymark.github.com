@@ -27,18 +27,28 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h3>Welcome to MarkMontyMark</h3>
+        <h2>Dev notes</h2>
 
-<p>More to come.  Eventually.  Dot dot dot.</p>
+<h3>Getting Jenkins Git plugin to resolve 'Auth fail' (ie handle SSH Keys)</h3>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+Turns out JGit plugin doesn't handle .ssh/ keys as well as commandline git.A
+
+The fix
+<br>
+<pre><code>nohup java -Dorg.jenkinsci.plugins.gitclient.Git.useCLI=true -jar jenkins.war &gt; jenkins.log 2&gt;&amp;1 &amp;</code></pre>
+
+The source
+<br>
+<pre><code>https://issues.jenkins-ci.org/browse/JENKINS-17204</code></pre>
+
+The gist
+<br>
+<pre><code>Luke D added a comment - 13/Mar/13 9:35 PM
+cray fellow: You did it! If you're ever in central California, look me up and I'll buy you a beer.
+For those of you who are used to starting Jenkins from terminal, here's the command that made it work for me (with the important bit starting after the java and before the -jar):
+nohup java -Dorg.jenkinsci.plugins.gitclient.Git.useCLI=true -jar ~/Documents/jenkins.war --httpPort=8081 --ajp13Port=8010 &gt; /tmp/jenkins.log 2&gt;&amp;1 &amp;
 </code></pre>
 
-<h3>Projects</h3>
-
-<h2>Todo</h2>
       </section>
     </div>
 

@@ -1,0 +1,22 @@
+{
+  "name": "markmontymark.github.com",
+  "version": "0.0.0",
+  "description": "Markmontymark GitHub Pages",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/markmontymark/markmontymark.github.com.git"
+  },
+  "author": "Mark Koopman",
+  "license": "BSD",
+  "gitHead": "34e8117c7922f8eb473338e4d9652875f7910320",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-coffee": "~0.6.3",
+    "grunt-exec": "~0.4.0",
+    "grunt-contrib-less": "~0.5.0"
+  }
+}

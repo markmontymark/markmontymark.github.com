@@ -31,7 +31,11 @@
 
 <h3>Getting Jenkins Git plugin to resolve 'Auth fail' (ie handle SSH Keys)</h3>
 
-Turns out JGit plugin doesn't handle .ssh/ keys as well as commandline git.A
+Turns out JGit plugin doesn't handle .ssh/ keys as well as commandline git.
+
+The face of it
+<br>
+<pre><code>hudson.plugins.git.GitException: org.eclipse.jgit.api.errors.TransportException: git@host:project.git: Auth fail</code></pre>
 
 The fix
 <br>

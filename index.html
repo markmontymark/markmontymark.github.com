@@ -27,7 +27,46 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
+
         <h2>Dev notes</h2>
+
+ <h3>Git subtrees</h3>
+
+Started incorporating a shared <code>scripts/</code> directory among my C projects to see how <b>git subtree</b> would work out.
+<br>
+First, created a simple shell scripts to use once per project to add my scripts sub tree:
+<br>
+<br>
+<pre>
+git remote add -f scripts git@github.com:markmontymark/scripts.git
+git merge -s ours --no-commit scripts/master
+git read-tree --prefix=scripts/ -u scripts/master
+git commit -m "Merge scripts/ as our subdirectory"
+git pull -s subtree scripts master
+</pre>
+<a href="https://raw.github.com/markmontymark/scripts/master/add-subtree.sh.example">Source</a>
+<p>
+
+Later when code is updated in <code>scripts</code>, you can merge the changes into the project with:
+<pre>git pull -s subtree git@github.com:markmontymark/scripts.git  master</pre>
+
+<h4>Upside</h4>
+
+Nice to share one module of code with many other projects
+
+<h4>Downside</h4>
+
+You need to go about manually merging changes in scripts in each project using it. Not that bad, in the case that a scripts change breaks things
+and you only break once you merge...but you have to remember merge.
+
+<h4>References</h4>
+
+<ul>
+<li><a href="http://stackoverflow.com/questions/9777564/git-subtree-pull-complications">http://stackoverflow.com/questions/9777564/git-subtree-pull-complications</a></li>
+<li><a href="http://www.kernel.org/pub/software/scm/git/docs/howto/using-merge-subtree.html">http://www.kernel.org/pub/software/scm/git/docs/howto/using-merge-subtree.html</a></li>
+</ul>
+
+<p>&nbsp;</p>
 
 <h3>Getting Jenkins Git plugin to resolve 'Auth fail' (ie handle SSH Keys)</h3>
 

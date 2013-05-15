@@ -1,109 +1,60 @@
 <!DOCTYPE html>
 <html>
+<head>
+<meta charset='utf-8' />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="description" content="Markmontymark.github.com : " />
+<link rel="stylesheet" type="text/css" media="screen" href="css/stylesheet.css">
+<title>Markmontymark.github.com</title>
+<script>
+var entries = [
+{
+	title : 'Git subtree  - merging changes from master into its subtree in another',
+	content: 'So you have use <pre>git subtree</pre> to use a common project in some other project.  That common project gets updated, so you want those updates available in your other project.  Problem is, you might have changes in the common project in your subtree-pulled project.  If you are willing to abandon those local changes, use <pre>git stash</pre> like so: <pre>git stash --save-index\ngit stash drop</pre> Then, you can merge the recent master changes into your subtree version with: <pre> git pull -s subtreeDir subtreeBranch </pre>'
+},
+{
+	title : 'Git subtree',
+	content: 'Started incorporating a shared <code>scripts/</code> directory among my C projects to see how <b>git subtree</b> would work out. <br> First, created a simple shell scripts to use once per project to add my scripts sub tree: <br> <br> <pre> git remote add -f scripts git@github.com:markmontymark/scripts.git \n git merge -s ours --no-commit scripts/master \n git read-tree --prefix=scripts/ -u scripts/master \n git commit -m "Merge scripts/ as our subdirectory"\n git pull -s subtree scripts master \n </pre> <a href="https://raw.github.com/markmontymark/scripts/master/add-subtree.sh.example">Source</a> <p> Later when code is updated in <code>scripts</code>, you can merge the changes into the project with: <pre>git pull -s subtree git@github.com:markmontymark/scripts.git  master</pre> <h4>Upside</h4> Nice to share one module of code with many other projects <h4>Downside</h4> You need to go about manually merging changes in scripts in each project using it. Not that bad, in the case that a scripts change breaks things and you only break once you merge...but you have to remember merge.  <h4>References</h4> <ul> <li><a href="http://stackoverflow.com/questions/9777564/git-subtree-pull-complications">http://stackoverflow.com/questions/9777564/git-subtree-pull-complications</a></li> <li><a href="http://www.kernel.org/pub/software/scm/git/docs/howto/using-merge-subtree.html">http://www.kernel.org/pub/software/scm/git/docs/howto/using-merge-subtree.html</a></li> </ul>'
+},
+{
+	title : 'Getting Jenkins Git plugin to resolve "Auth fail" (ie handle SSH Keys)',
+	content: 'Turns out JGit plugin doesn\'t handle .ssh/ keys as well as commandline git.\n The face of it <br> <pre><code>hudson.plugins.git.GitException: org.eclipse.jgit.api.errors.TransportException: git@host:project.git: Auth fail</code></pre> \n The fix <br> <pre><code>nohup java -Dorg.jenkinsci.plugins.gitclient.Git.useCLI=true -jar jenkins.war &gt; jenkins.log 2&gt;&amp;1 &amp;</code></pre> \n The source <br> <pre><code>https://issues.jenkins-ci.org/browse/JENKINS-17204</code></pre> \n The gist <br> <pre><code>Luke D added a comment - 13/Mar/13 9:35 PM\n cray fellow: You did it! If you\'re ever in central California, look me up and I\'ll buy you a beer.\n For those of you who are used to starting Jenkins from terminal, here\'s the command that made it \n work for me (with the important bit starting after the java and before the -jar):\n \n nohup java -Dorg.jenkinsci.plugins.gitclient.Git.useCLI=true -jar ~/Documents/jenkins.war --httpPort=8081 --ajp13Port=8010 &gt; /tmp/jenkins.log 2&gt;&amp;1 &amp;</code></pre>'
+}
+];
+</script>
+</head>
+<body>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script>
+	$(document).ready( function(){
+		var mainContent$ = $("#main_content");
+		for(var i=0,len=entries.length,entry=entries[i]; i < len; entry = entries[++i])
+			mainContent$.append( '<h3>' + entry.title + '</h3>' + entry.content  +  '<p>&nbsp;</p>');
+	});
+</script>
 
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Markmontymark.github.com : " />
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+	<header class="inner">
+		<a id="forkme_banner" href="https://github.com/markmontymark">View on GitHub</a>
+		<h1 id="project_title">Markmontymark.github.com</h1>
+		<h2 id="project_tagline"></h2>
+	</header>
+</div>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="css/stylesheet.css">
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+	<section id="main_content" class="inner">
+		<h2>Dev notes</h2>
+	</section>
+</div>
 
-    <title>Markmontymark.github.com</title>
-  </head>
+<!-- FOOTER  -->
+<div id="footer_wrap" class="outer">
+	<footer class="inner">
+		<p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+	</footer>
+</div>
 
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/markmontymark">View on GitHub</a>
-
-          <h1 id="project_title">Markmontymark.github.com</h1>
-          <h2 id="project_tagline"></h2>
-
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-
-        <h2>Dev notes</h2>
-
- <h3>Git subtrees</h3>
-
-Started incorporating a shared <code>scripts/</code> directory among my C projects to see how <b>git subtree</b> would work out.
-<br>
-First, created a simple shell scripts to use once per project to add my scripts sub tree:
-<br>
-<br>
-<pre>
-git remote add -f scripts git@github.com:markmontymark/scripts.git
-git merge -s ours --no-commit scripts/master
-git read-tree --prefix=scripts/ -u scripts/master
-git commit -m "Merge scripts/ as our subdirectory"
-git pull -s subtree scripts master
-</pre>
-<a href="https://raw.github.com/markmontymark/scripts/master/add-subtree.sh.example">Source</a>
-<p>
-
-Later when code is updated in <code>scripts</code>, you can merge the changes into the project with:
-<pre>git pull -s subtree git@github.com:markmontymark/scripts.git  master</pre>
-
-<h4>Upside</h4>
-
-Nice to share one module of code with many other projects
-
-<h4>Downside</h4>
-
-You need to go about manually merging changes in scripts in each project using it. Not that bad, in the case that a scripts change breaks things
-and you only break once you merge...but you have to remember merge.
-
-<h4>References</h4>
-
-<ul>
-<li><a href="http://stackoverflow.com/questions/9777564/git-subtree-pull-complications">http://stackoverflow.com/questions/9777564/git-subtree-pull-complications</a></li>
-<li><a href="http://www.kernel.org/pub/software/scm/git/docs/howto/using-merge-subtree.html">http://www.kernel.org/pub/software/scm/git/docs/howto/using-merge-subtree.html</a></li>
-</ul>
-
-<p>&nbsp;</p>
-
-<h3>Getting Jenkins Git plugin to resolve 'Auth fail' (ie handle SSH Keys)</h3>
-
-Turns out JGit plugin doesn't handle .ssh/ keys as well as commandline git.
-
-The face of it
-<br>
-<pre><code>hudson.plugins.git.GitException: org.eclipse.jgit.api.errors.TransportException: git@host:project.git: Auth fail</code></pre>
-
-The fix
-<br>
-<pre><code>nohup java -Dorg.jenkinsci.plugins.gitclient.Git.useCLI=true -jar jenkins.war &gt; jenkins.log 2&gt;&amp;1 &amp;</code></pre>
-
-The source
-<br>
-<pre><code>https://issues.jenkins-ci.org/browse/JENKINS-17204</code></pre>
-
-The gist
-<br>
-<pre><code>Luke D added a comment - 13/Mar/13 9:35 PM
-cray fellow: You did it! If you're ever in central California, look me up and I'll buy you a beer.
-For those of you who are used to starting Jenkins from terminal, here's the command that made it 
-work for me (with the important bit starting after the java and before the -jar):
-
-nohup java -Dorg.jenkinsci.plugins.gitclient.Git.useCLI=true -jar ~/Documents/jenkins.war --httpPort=8081 --ajp13Port=8010 &gt; /tmp/jenkins.log 2&gt;&amp;1 &amp;</code></pre>
-
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
-  </body>
+</body>
 </html>

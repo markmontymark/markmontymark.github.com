@@ -9,6 +9,12 @@
 <script>
 var entries = [
 {
+
+	title : 'Counting is stupid - Vim copy\'n\'paste N lines of text',
+	content: 'Using a text editor on a daily basis, a very common task is copying or cutting and pasting lines in a file.  A simple (re: dumbish) way to do this in VI is to count lines and use the yank command.  So to copy\'n\'paste 5 lines at and below the cursor is: <pre>y5y\np</pre>  But when you have lots of lines to copy, possibly lines that roll off the current screen you can increase the chance of copying and pasting twoo many or not enough lines.  To resolve that ambiguity, you can explicitly mark a line an copy to that mark spot.  To do that, try <pre>mk # mark a spot called \'k\'\n#move cursor somewhere up or down\ny\'k # yanks all lines from mark spot, \'k\'\n#move cursor where you want to place text just yanked\np  # paste lines</pre>'
+},
+{
+
 	title : 'Git subtree  - merging changes from master into its subtree in another',
 	content: 'So you have use <pre>git subtree</pre> to use a common project in some other project.  That common project gets updated, so you want those updates available in your other project.  Problem is, you might have changes in the common project in your subtree-pulled project.  If you are willing to abandon those local changes, use <pre>git stash</pre> like so: <pre>git stash --save-index\ngit stash drop</pre> Then, you can merge the recent master changes into your subtree version with: <pre> git pull -s subtreeDir subtreeBranch </pre>'
 },

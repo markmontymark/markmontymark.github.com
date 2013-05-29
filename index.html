@@ -11,7 +11,7 @@ var entries = [
 {
 
 	title : 'Counting is stupid - Vim copy\'n\'paste N lines of text',
-	content: 'Using a text editor on a daily basis, a very common task is copying or cutting and pasting lines in a file.  A simple (re: dumbish) way to do this in VI is to count lines and use the yank command.  So to copy\'n\'paste 5 lines at and below the cursor is: <pre>y5y\np</pre>  But when you have lots of lines to copy, possibly lines that roll off the current screen you can increase the chance of copying and pasting twoo many or not enough lines.  To resolve that ambiguity, you can explicitly mark a line an copy to that mark spot.  To do that, try <pre>mk # mark a spot called \'k\'\n#move cursor somewhere up or down\ny\'k # yanks all lines from mark spot, \'k\'\n#move cursor where you want to place text just yanked\np  # paste lines</pre>'
+	content: 'Using a text editor on a daily basis, a very common task is copying or cutting and pasting lines in a file.  A simple (re: dumbish) way to do this in VI is to count lines and use the yank command.  So to copy\'n\'paste 5 lines at and below the cursor is: <pre>y5y\np</pre>  But when you have lots of lines to copy, possibly lines that roll off the current screen you can increase the chance of copying and pasting twoo many or not enough lines.  To resolve that ambiguity, you can explicitly mark a line an copy to that mark spot.  To do that, try <pre>mk # mark a spot called \'k\'\n#move cursor somewhere up or down\ny\'k # yanks all lines from mark spot, \'k\'\n#move cursor where you want to place text just yanked\np  # paste lines</pre> So, that\'s a demo for copy\'n\'paste -- if you want to cut\'n\'paste, use <code> d\'k</code> instead of <code>y\'k</code>'
 },
 {
 

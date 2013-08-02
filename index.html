@@ -9,7 +9,10 @@
 <script>
 var entries = [
 {
-
+	title : 'Perl6 is fun',
+	content: 'I\'ve been porting Fluffy Cat\' GoF patterns to C and Perl and Python and I\'ve started on porting to Perl6.  So far, Perl6 (via Rakudo Star) has been a pleasure to write to because it\'s so intuitive to use role, class, method, multi method syntax.   Very straight-forward to port Perl5 Moo, Moo::Role, and Class::Virtually::Abstract-based OOP to just straight up Perl6 (ie. love not having to install extra modules to do this sort of thing).  So far the resources I\'m using to learn Perl6:<br><ul><li><a href="http://perl6.org">perl6.org</a><li><li><a href="https://github.com/downloads/perl6/book/2012.05.23.a4.pdf">https://github.com/downloads/perl6/book/2012.05.23.a4.pdf</a></li><li><a href="http://en.wikibooks.org/wiki/Perl_6_Programming">http://en.wikibooks.org/wiki/Perl_6_Programming</a></li></ul>'
+},
+{
 	title : 'Counting is stupid - Vim copy\'n\'paste N lines of text',
 	content: 'Using a text editor on a daily basis, a very common task is copying or cutting and pasting lines in a file.  A simple (re: dumbish) way to do this in VI is to count lines and use the yank command.  So to copy\'n\'paste 5 lines at and below the cursor is: <pre>y5y\np</pre>  But when you have lots of lines to copy, possibly lines that roll off the current screen you can increase the chance of copying and pasting twoo many or not enough lines.  To resolve that ambiguity, you can explicitly mark a line an copy to that mark spot.  To do that, try <pre>mk # mark a spot called \'k\'\n#move cursor somewhere up or down\ny\'k # yanks all lines from mark spot, \'k\'\n#move cursor where you want to place text just yanked\np  # paste lines</pre> So, that\'s a demo for copy\'n\'paste -- if you want to cut\'n\'paste, use <code> d\'k</code> instead of <code>y\'k</code>'
 },
